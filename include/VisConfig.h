@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 struct VisHSV{                          // helper struct for component definition
 
   uint32_t    cmp_cmp_drv;              // component driver
@@ -18,33 +16,6 @@ struct VisHSV{                          // helper struct for component definitio
   bool        cmp_out_per;              // component persist value if > new fft value
 };
 
-/*
-struct VisConfig{
-
-        //VisConfig2
-        float    ana_rsp_tho;
-        uint32_t ana_bnd_rng;
-        uint32_t mtx_win_w;
-        uint32_t mtx_win_h;
-        uint32_t mtx_win_x;
-        uint32_t mtx_win_y;
-        uint32_t _mtx_led_lay;
-        uint32_t vis_frm_ini;
-        uint32_t vis_frm_div;
-        uint32_t vis_frm_inc;
-        uint32_t vis_pat_sel;
-        uint32_t ana_var_pss;
-        VisHSV   vis_hsv[3];
-
-        //VisControl
-        bool     vis_cfg_rst;
-        bool     app_vis_run;  
-        uint32_t app_frm_num;
-        uint32_t app_frm_mrk;
-        float    ana_var_bnd[64];
-};
-*/
-
 struct VisControl{
         bool     vis_cfg_rst;
         bool     app_vis_run;  
@@ -57,7 +28,7 @@ struct VisData{
         float    ana_var_bnd[64];
 };
 
-struct VisConfig2{
+struct VisConfig{
         float    ana_rsp_tho;
         uint32_t ana_bnd_rng;
         uint32_t mtx_win_w;
@@ -87,17 +58,22 @@ struct MatConfig{
 };
 
 struct PacketHeader{
-  uint32_t   frameType;      // Frame type
-  uint32_t   packetNum;      // Packets number in frame
-  uint32_t   packetLast;     // Packets per frame
-  uint32_t   dataSize;       // Packet data size (bytes)
+  uint32_t   frameType;        // Frame type
+  uint32_t   packetHeaderSize; // Paket header size (bytes)
+  uint32_t   packetDataSize;   // Packet data size (bytes)
+  uint32_t   packetPerFrame;   // Packets per frame
+  uint32_t   packetInFrame;    // Packets number in frame
 };
 
 struct FrameConfig{
-  uint32_t   frameType;      // Frame type
-  uint32_t   frameSize;      // Frame type size (bytes)
-  uint32_t   frameTime;      // Frame type last seen
-  uint32_t   packetLast;     // Packets per frame
-  uint32_t   packetSize;     // Packet size (bytes)
-  uint32_t   dataSize;       // Packet data size (bytes)
+  uint32_t   frameType;        // Frame type
+  uint32_t   frameHeaderSize;  // Frame header size (bytes)
+  uint32_t   frameDataSize;    // Frame data size (bytes)
+  uint32_t   frameTotalSize;   // Frame total size (bytes)
+  uint32_t   frameTime;        // Frame type last seen
+
+  uint32_t   packetHeaderSize; // Packet data size (bytes)
+  uint32_t   packetDataSize;   // Packet data size (bytes)
+  uint32_t   packetTotalSize;  // Packet size (bytes)
+  uint32_t   packetPerFrame;   // Packets per frame
 };
