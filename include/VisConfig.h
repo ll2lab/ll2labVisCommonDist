@@ -46,6 +46,7 @@ struct VisConfig{
 
 struct MatConfig{
   uint8_t  mtx_num;
+  uint8_t  mtx_led_mac[6];
   uint32_t pnl_led_w;
   uint32_t pnl_led_h;
   uint32_t pnl_led_d;
