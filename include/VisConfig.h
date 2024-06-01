@@ -1,3 +1,9 @@
+#define FRAME_TYPE_COUNT      4
+#define FRAME_TYPE_VISCTL     0
+#define FRAME_TYPE_VISCFG     1
+#define FRAME_TYPE_VISDAT     2
+#define FRAME_TYPE_MATCFG     3
+
 struct VisHSV{                          // helper struct for component definition
 
   uint32_t    cmp_cmp_drv;              // component driver
