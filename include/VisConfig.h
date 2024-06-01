@@ -1,3 +1,6 @@
+#ifndef VISCONFIG_H
+#define VISCONFIG_H
+
 #define FRAME_TYPE_COUNT      4
 #define FRAME_TYPE_VISCTL     0
 #define FRAME_TYPE_VISCFG     1
@@ -88,3 +91,5 @@ struct FrameConfig{
   uint32_t   packetTotalSize;  // Packet size (bytes)
   uint32_t   packetPerFrame;   // Packets per frame
 };
+
+#endif
