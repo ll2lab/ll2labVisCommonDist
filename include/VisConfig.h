@@ -58,17 +58,31 @@ struct VisConfig{
 
 
 struct MatConfig{
-  uint8_t  mtx_num;
-  uint8_t  mtx_led_mac[6];
-  uint32_t pnl_led_w;
-  uint32_t pnl_led_h;
-  uint32_t pnl_led_d;
-  uint32_t mtx_led_x;
-  uint32_t mtx_led_y;
-  uint32_t mtx_led_z;
-  uint32_t mtx_led_w;
-  uint32_t mtx_led_h;
-  uint32_t mtx_led_d;  
+  uint32_t panel_w;
+  uint32_t panel_h;
+  uint32_t panel_d;
+  uint32_t panel_rot;
+  bool     panel_rev_x;
+  bool     panel_rev_y;
+  bool     panel_rev_z;
+  bool     panel_ref_x;
+  bool     panel_ref_y;
+  bool     panel_ref_z;
+  uint8_t  matrix_id;
+  uint8_t  matrix_mac[6];
+  uint32_t matrix_x;
+  uint32_t matrix_y;
+  uint32_t matrix_z;
+  uint32_t matrix_w;
+  uint32_t matrix_h;
+  uint32_t matrix_d;  
+  uint32_t matrix_rot;
+  bool     matrix_rev_x;
+  bool     matrix_rev_y;
+  bool     matrix_rev_z;
+  bool     matrix_ref_x;
+  bool     matrix_ref_y;
+  bool     matrix_ref_z;  
 };
 
 struct PacketHeader{

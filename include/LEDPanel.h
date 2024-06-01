@@ -8,17 +8,17 @@ class LEDPanel{
 
   public:
 
-    uint32_t  pnl_led_w;    // matrix leds width
-    uint32_t  pnl_led_h;    // matrix leds height
-    uint32_t  pnl_led_d;    // matrix leds depth
+    uint32_t  panel_w;    // matrix leds width
+    uint32_t  panel_h;    // matrix leds height
+    uint32_t  panel_d;    // matrix leds depth
 
-         LEDPanel(uint32_t w, uint32_t h, uint32_t d);
+         LEDPanel(uint32_t panel_w, uint32_t panel_h, uint32_t panel_d);
         ~LEDPanel();
 
-    void  addMatrix(const char* mac, uint32_t x, uint32_t y, uint32_t z, uint32_t w, uint32_t h, uint32_t d);
+    void  addMatrix(const char* mac, uint32_t matrix_x, uint32_t matrix_y, uint32_t matrix_z, uint32_t matrix_w, uint32_t matrix_h, uint32_t matrix_d);
 
-    MatConfig mtx[4];
-    uint32_t        mtx_num;
+    MatConfig matrix[4];
+    uint32_t  matrix_next;
 };
 
 #endif
