@@ -41,12 +41,16 @@ struct VisConfig{
         uint32_t mtx_win_h;
         uint32_t mtx_win_x;
         uint32_t mtx_win_y;
-        uint32_t _mtx_led_lay;
+        uint32_t vis_rev_x;
+        uint32_t vis_ref_x;
+        uint32_t vis_rev_y;
+        uint32_t vis_ref_y;
         uint32_t vis_frm_ini;
         uint32_t vis_frm_div;
         uint32_t vis_frm_inc;
         uint32_t vis_pat_sel;
         VisHSV   vis_hsv[3];
+
 };
 
 
