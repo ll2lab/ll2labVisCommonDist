@@ -17,7 +17,7 @@ class LEDPanel{
 
     void  addMatrix(const char* mac, uint32_t matrix_x, uint32_t matrix_y, uint32_t matrix_z, uint32_t matrix_w, uint32_t matrix_h, uint32_t matrix_d);
 
-    MatConfig matrix[4];
+    MatrixConfig matrix[4];
     uint32_t  matrix_next;
 };
 
