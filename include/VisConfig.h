@@ -18,7 +18,7 @@ struct FrameConfig{
   uint32_t packetTotalSize;  // Packet size (bytes)
   uint32_t packetPerFrame;   // Packets per frame
 };
-
+ 
 struct PacketHeader{
   uint32_t frameType;        // Frame type
   uint32_t packetHeaderSize; // Paket header size (bytes)
