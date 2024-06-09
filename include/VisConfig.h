@@ -26,28 +26,6 @@ struct PacketHeader{
   uint32_t packetPerFrame;   // Packets per frame
   uint32_t packetInFrame;    // Packets number in frame
 };
-
-struct PanelConfg{
-  uint8_t  panel_id;         // Panel id
-  uint32_t panel_dim_x;      // Panel dimension x
-  uint32_t panel_dim_y;      // Panel dimension y
-  uint32_t panel_dim_z;      // Panel dimension y
-  int32_t  panel_pos_x;      // Panel position x
-  int32_t  panel_pos_y;      // Panel position y
-  int32_t  panel_pos_z;      // Panel position z
-  int32_t  panel_piv_x;      // Panel pivot x
-  int32_t  panel_piv_y;      // Panel pivot y
-  int32_t  panel_piv_z;      // Panel pivot z
-  int32_t  panel_rot_x;      // Panel rotation about x axis (degrees)
-  int32_t  panel_rot_y;      // Panel rotation about y axis (degrees)
-  int32_t  panel_rot_z;      // Panel rotation about z axis (degrees) 
-  bool     panel_rev_x;      // Panel reverse x-axis
-  bool     panel_rev_y;      // Panel reverse y-axis
-  bool     panel_rev_z;      // Panel reverse z-axis
-  bool     panel_ref_x;      // Panel reflect across x-centre
-  bool     panel_ref_y;      // Panel reflect across y-centre
-  bool     panel_ref_z;      // Panel reflect across z-centre
-};
 struct MatrixConfig{
 
   uint8_t  panel_id;         // Panel id
@@ -162,14 +140,13 @@ struct VisControl{
 };
 
 struct VisData{
-        uint32_t panel_frm_num;
+        uint32_t analyser_frm_num;
         uint32_t analyser_var_pss;
         float    analyser_var_bnd[64];
 };
 
 struct VisConfig{
-        float    analyser_rsp_tho;
-        uint32_t analyser_bnd_rng;
+        float    visual_inp_thr;
         uint32_t visual_dim_x;
         uint32_t visual_dim_y;
         uint32_t visual_dim_z;
@@ -185,14 +162,11 @@ struct VisConfig{
         bool     visual_ref_x;
         bool     visual_ref_y;
         bool     visual_ref_z;
-
-
         uint32_t visual_frm_ini;
         uint32_t visual_frm_div;
         uint32_t visual_frm_inc;
         uint32_t visual_pat_sel;
         VisHSV   visual_hsv[3];
-
 };
 
 #endif
