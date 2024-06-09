@@ -139,50 +139,59 @@ struct MatrixConfig{
 */
 struct VisHSV{                          // helper struct for component definition
 
-  uint32_t    cmp_cmp_drv;              // component driver
+  uint32_t    hsv_hsv_drv;              // component driver
 
-  uint32_t    cmp_rng_ini;              // component range initial (0-255)
-  uint32_t    cmp_rng_min;              // component range minimum (0-255)
-  uint32_t    cmp_rng_max;              // component range maximum (0-255)
+  uint32_t    hsv_rng_ini;              // component range initial (0-255)
+  uint32_t    hsv_rng_min;              // component range minimum (0-255)
+  uint32_t    hsv_rng_max;              // component range maximum (0-255)
 
-  uint32_t    cmp_bnd_min;              // component led minimum (0-255)
-  uint32_t    cmp_bnd_max;              // component led maximum (0-255)
+  uint32_t    hsv_bnd_min;              // component led minimum (0-255)
+  uint32_t    hsv_bnd_max;              // component led maximum (0-255)
 
-  int32_t     cmp_bnd_del;              // component output delta per bin
-  int32_t     cmp_frm_del;              // component frame delta
-  float       cmp_frm_dcy;              // component frame decay multiplier
+  int32_t     hsv_bnd_del;              // component output delta per bin
+  int32_t     hsv_frm_del;              // component frame delta
+  float       hsv_frm_dcy;              // component frame decay multiplier
 
-  bool        cmp_out_per;              // component persist value if > new fft value
+  bool        hsv_out_per;              // component persist value if > new fft value
 };
 
 struct VisControl{
-        bool     vis_cfg_rst;
-        bool     app_vis_run;  
-        uint32_t app_frm_mrk;        
+        bool     panel_rst;
+        bool     panel_run;  
+        uint32_t panel_frm_mrk;        
 };
 
 struct VisData{
-        uint32_t app_frm_num;
-        uint32_t ana_var_pss;
-        float    ana_var_bnd[64];
+        uint32_t panel_frm_num;
+        uint32_t analyser_var_pss;
+        float    analyser_var_bnd[64];
 };
 
 struct VisConfig{
-        float    ana_rsp_tho;
-        uint32_t ana_bnd_rng;
-        uint32_t mtx_win_w;
-        uint32_t mtx_win_h;
-        uint32_t mtx_win_x;
-        uint32_t mtx_win_y;
-        uint32_t vis_rev_x;
-        uint32_t vis_ref_x;
-        uint32_t vis_rev_y;
-        uint32_t vis_ref_y;
-        uint32_t vis_frm_ini;
-        uint32_t vis_frm_div;
-        uint32_t vis_frm_inc;
-        uint32_t vis_pat_sel;
-        VisHSV   vis_hsv[3];
+        float    analyser_rsp_tho;
+        uint32_t analyser_bnd_rng;
+        uint32_t visual_dim_x;
+        uint32_t visual_dim_y;
+        uint32_t visual_dim_z;
+        int32_t  visual_pos_x;
+        int32_t  visual_pos_y;
+        int32_t  visual_pos_z;
+        int32_t  visual_piv_x;
+        int32_t  visual_piv_y;
+        int32_t  visual_piv_z;
+        bool     visual_rev_x;
+        bool     visual_rev_y;
+        bool     visual_rev_z;
+        bool     visual_ref_x;
+        bool     visual_ref_y;
+        bool     visual_ref_z;
+
+
+        uint32_t visual_frm_ini;
+        uint32_t visual_frm_div;
+        uint32_t visual_frm_inc;
+        uint32_t visual_pat_sel;
+        VisHSV   visual_hsv[3];
 
 };
 
