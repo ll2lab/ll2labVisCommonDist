@@ -8,6 +8,9 @@
 #define FRAME_TYPE_ANALYSERDATA 1  
 #define FRAME_TYPE_MATRIXCONFIG 2
 
+#define FRAME_TX_BROADCAST      0
+#define FRAME_TX_UNICAST        1
+
 struct FrameConfig{
   uint32_t frameType;        // Frame type
   uint32_t frameHeaderSize;  // Frame header size (bytes)
@@ -19,14 +22,24 @@ struct FrameConfig{
   uint32_t packetTotalSize;  // Packet size (bytes)
   uint32_t packetPerFrame;   // Packets per frame
 };
- 
+
+struct FrameHeader{
+  uint8_t  txType;          // Frame broadcast or unicast
+  uint8_t  rxMac[6];        // Matrix MAC address for unicast
+};
+
 struct PacketHeader{
   uint32_t frameType;        // Frame type
-  uint32_t packetHeaderSize; // Paket header size (bytes)
+  uint32_t packetHeaderSize; // Packet header size (bytes)
   uint32_t packetDataSize;   // Packet data size (bytes)
   uint32_t packetPerFrame;   // Packets per frame
   uint32_t packetInFrame;    // Packets number in frame
 };
+
+#define VIS_HSV_NUM   3UL
+#define VIS_HSV_HUE   0UL
+#define VIS_HSV_SAT   1UL
+#define VIS_HSV_VAL   2UL
 
 struct HSVConfig{                          // helper struct for component definition
 
