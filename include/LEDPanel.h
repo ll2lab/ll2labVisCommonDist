@@ -4,6 +4,12 @@
 #ifndef LEDPANEL_H
 #define LEDPANEL_H
 
+#define FRAME_TYPE_COUNT  3
+#define FRAME_TYPE_VISCTL 0
+//#define FRAME_TYPE_VISCFG 1
+#define FRAME_TYPE_VISDAT 1  
+#define FRAME_TYPE_MATCFG 2
+
 class LEDPanel{
 
   public:

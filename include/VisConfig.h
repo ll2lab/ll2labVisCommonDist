@@ -1,11 +1,7 @@
 #ifndef VISCONFIG_H
 #define VISCONFIG_H
 
-#define FRAME_TYPE_COUNT  4
-#define FRAME_TYPE_VISCTL 0
-#define FRAME_TYPE_VISCFG 1
-#define FRAME_TYPE_VISDAT 2
-#define FRAME_TYPE_MATCFG 3
+
 
 struct FrameConfig{
   uint32_t frameType;        // Frame type
@@ -26,6 +22,25 @@ struct PacketHeader{
   uint32_t packetPerFrame;   // Packets per frame
   uint32_t packetInFrame;    // Packets number in frame
 };
+
+struct VisHSV{                          // helper struct for component definition
+
+  uint32_t    hsv_hsv_drv;              // component driver
+
+  uint32_t    hsv_rng_ini;              // component range initial (0-255)
+  uint32_t    hsv_rng_min;              // component range minimum (0-255)
+  uint32_t    hsv_rng_max;              // component range maximum (0-255)
+
+  uint32_t    hsv_bnd_min;              // component led minimum (0-255)
+  uint32_t    hsv_bnd_max;              // component led maximum (0-255)
+
+  int32_t     hsv_bnd_del;              // component output delta per bin
+  int32_t     hsv_frm_del;              // component frame delta
+  float       hsv_frm_dcy;              // component frame decay multiplier
+
+  bool        hsv_out_per;              // component persist value if > new fft value
+};
+
 struct MatrixConfig{
 
   uint8_t  panel_id;         // Panel id
@@ -92,6 +107,13 @@ struct MatrixConfig{
   bool     visual_ref_y;     // Visual reflect across y-centre
   bool     visual_ref_z;     // Visual reflect across z-centre  
   uint32_t visual_bri;       // Visual brightness (% of matrix brightness)
+
+  float    visual_inp_thr;
+  uint32_t visual_frm_ini;
+  uint32_t visual_frm_div;
+  uint32_t visual_frm_inc;
+  uint32_t visual_pat_sel;
+  VisHSV   visual_hsv[3];
 };
 
 /*struct VisualConfig{
@@ -115,23 +137,6 @@ struct MatrixConfig{
   bool     visual_ref_z;     // Visual reflect across z-centre  
 };
 */
-struct VisHSV{                          // helper struct for component definition
-
-  uint32_t    hsv_hsv_drv;              // component driver
-
-  uint32_t    hsv_rng_ini;              // component range initial (0-255)
-  uint32_t    hsv_rng_min;              // component range minimum (0-255)
-  uint32_t    hsv_rng_max;              // component range maximum (0-255)
-
-  uint32_t    hsv_bnd_min;              // component led minimum (0-255)
-  uint32_t    hsv_bnd_max;              // component led maximum (0-255)
-
-  int32_t     hsv_bnd_del;              // component output delta per bin
-  int32_t     hsv_frm_del;              // component frame delta
-  float       hsv_frm_dcy;              // component frame decay multiplier
-
-  bool        hsv_out_per;              // component persist value if > new fft value
-};
 
 struct VisControl{
         bool     panel_rst;
@@ -143,30 +148,6 @@ struct VisData{
         uint32_t analyser_frm_num;
         uint32_t analyser_var_pss;
         float    analyser_var_bnd[64];
-};
-
-struct VisConfig{
-        float    visual_inp_thr;
-        uint32_t visual_dim_x;
-        uint32_t visual_dim_y;
-        uint32_t visual_dim_z;
-        int32_t  visual_pos_x;
-        int32_t  visual_pos_y;
-        int32_t  visual_pos_z;
-        int32_t  visual_piv_x;
-        int32_t  visual_piv_y;
-        int32_t  visual_piv_z;
-        bool     visual_rev_x;
-        bool     visual_rev_y;
-        bool     visual_rev_z;
-        bool     visual_ref_x;
-        bool     visual_ref_y;
-        bool     visual_ref_z;
-        uint32_t visual_frm_ini;
-        uint32_t visual_frm_div;
-        uint32_t visual_frm_inc;
-        uint32_t visual_pat_sel;
-        VisHSV   visual_hsv[3];
 };
 
 #endif
