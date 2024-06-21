@@ -59,9 +59,33 @@ struct HSVConfig{                          // helper struct for component defini
   bool        hsv_out_per;              // component persist value if > new fft value
 };
 
+struct Mappable{
+  uint8_t  id;         // ID
+  uint32_t dim_x;      // Transform dimension x
+  uint32_t dim_y;      // Transform dimension y
+  uint32_t dim_z;      // Transform dimension y
+  int32_t  pos_x;      // Transform position x
+  int32_t  pos_y;      // Transform position y
+  int32_t  pos_z;      // Transform position z
+  int32_t  piv_x;      // Transform pivot x
+  int32_t  piv_y;      // Transform pivot y
+  int32_t  piv_z;      // Transform pivot z
+  int32_t  rot_x;      // Transform rotation about x axis (degrees)
+  int32_t  rot_y;      // Transform rotation about y axis (degrees)
+  int32_t  rot_z;      // Transform rotation about z axis (degrees) 
+  bool     rev_x;      // Transform reverse x-axis
+  bool     rev_y;      // Transform reverse y-axis
+  bool     rev_z;      // Transform reverse z-axis
+  bool     ref_x;      // Transform reflect across x-centre
+  bool     ref_y;      // Transform reflect across y-centre
+  bool     ref_z;      // Transform reflect across z-centre
+  uint32_t bri;        // Transform brightness (% of full brightness)  
+};
+
 struct MatrixConfig{
 
-  uint8_t  panel_id;         // Panel id
+  Mappable panel;
+  /*
   uint32_t panel_dim_x;      // Panel dimension x
   uint32_t panel_dim_y;      // Panel dimension y
   uint32_t panel_dim_z;      // Panel dimension y
@@ -81,7 +105,7 @@ struct MatrixConfig{
   bool     panel_ref_y;      // Panel reflect across y-centre
   bool     panel_ref_z;      // Panel reflect across z-centre
   uint32_t panel_bri;        // Panel brightness (% of full brightness)
-
+*/
   uint8_t  matrix_id;        // Matrix id
   uint8_t  matrix_pin;       // Matrix SPI pin
   uint8_t  matrix_mac[6];    // Matrix MAC address
@@ -151,10 +175,10 @@ class LEDPanel{
 
   public:
 
-    uint32_t  panel_dim_x;    // Panel width
-    uint32_t  panel_dim_y;    // Panel height
-    uint32_t  panel_dim_z;    // Panel depth
-    uint8_t   panel_bri;      // Panel brightness %
+    uint32_t  dim_x;    // Panel width
+    uint32_t  dim_y;    // Panel height
+    uint32_t  dim_z;    // Panel depth
+    uint8_t   bri;      // Panel brightness %
 
          LEDPanel(uint32_t panel_dim_x, uint32_t panel_dim_y, uint32_t panel_dim_z);
         ~LEDPanel();
