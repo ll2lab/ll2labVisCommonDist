@@ -85,6 +85,9 @@ struct Mappable{
 struct MatrixConfig{
 
   Mappable panel;
+  Mappable matrix;
+  uint8_t  matrix_pin;       // Matrix SPI pin
+  uint8_t  matrix_mac[6];    // Matrix MAC address
   /*
   uint32_t panel_dim_x;      // Panel dimension x
   uint32_t panel_dim_y;      // Panel dimension y
@@ -105,10 +108,7 @@ struct MatrixConfig{
   bool     panel_ref_y;      // Panel reflect across y-centre
   bool     panel_ref_z;      // Panel reflect across z-centre
   uint32_t panel_bri;        // Panel brightness (% of full brightness)
-*/
   uint8_t  matrix_id;        // Matrix id
-  uint8_t  matrix_pin;       // Matrix SPI pin
-  uint8_t  matrix_mac[6];    // Matrix MAC address
   uint32_t matrix_dim_x;     // Matrix dimension x
   uint32_t matrix_dim_y;     // Matrix dimension y
   uint32_t matrix_dim_z;     // Matrix dimension y
@@ -128,6 +128,7 @@ struct MatrixConfig{
   bool     matrix_ref_y;     // Matrix reflect across y-centre
   bool     matrix_ref_z;     // Matrix reflect across z-centre
   uint32_t matrix_bri;       // Matrix brightness (% of panel brightness)
+*/
 
   uint8_t  visual_id;        // Visual id
   uint32_t visual_dim_x;     // Visual dimension x
