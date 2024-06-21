@@ -79,7 +79,24 @@ struct Mappable{
   bool     ref_x;      // Transform reflect across x-centre
   bool     ref_y;      // Transform reflect across y-centre
   bool     ref_z;      // Transform reflect across z-centre
-  uint32_t bri;        // Transform brightness (% of full brightness)  
+  uint32_t led_i;        // Transform brightness (% of full brightness)  
+};
+
+struct MappableCalc{
+  int32_t  pos_x0;
+  int32_t  pos_x1;
+  int32_t  pos_y0;
+  int32_t  pos_y1;
+  int32_t  pos_z0;
+  int32_t  pos_z1;  
+  float    rot_x_sin;  
+  float    rot_y_sin;  
+  float    rot_z_sin;  
+  float    rot_x_cos;  
+  float    rot_y_cos;  
+  float    rot_z_cos; 
+  uint32_t led_n;
+  uint8_t  led_i;
 };
 
 struct MatrixConfig{
@@ -97,6 +114,12 @@ struct MatrixConfig{
   uint32_t visual_frm_inc;
   uint32_t visual_pat_sel;
   HSVConfig   visual_hsv[3];
+};
+
+struct MatrixCalc{
+  MappableCalc panel;
+  MappableCalc matrix;
+  MappableCalc visual;
 };
 
 struct PanelControl{
@@ -119,7 +142,7 @@ class LEDPanel{
     uint32_t  dim_x;    // Panel width
     uint32_t  dim_y;    // Panel height
     uint32_t  dim_z;    // Panel depth
-    uint8_t   bri;      // Panel brightness %
+    uint8_t   led_i;      // Panel brightness %
 
          LEDPanel(uint32_t panel_dim_x, uint32_t panel_dim_y, uint32_t panel_dim_z);
         ~LEDPanel();
