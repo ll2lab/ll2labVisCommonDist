@@ -8,6 +8,11 @@
 #define FRAME_TYPE_ANALYSERDATA 1  
 #define FRAME_TYPE_MATRIXCONFIG 2
 
+#define LED_MAP_COUNT           3
+#define LED_MAP_VISUAL          0
+#define LED_MAP_PANEL           1
+#define LED_MAP_MATRIX          2
+
 #define FRAME_TX_BROADCAST      0
 #define FRAME_TX_UNICAST        1
 
@@ -60,26 +65,32 @@ struct HSVConfig{                          // helper struct for component defini
 };
 
 struct Mappable{
-  uint8_t  id;         // ID
-  uint32_t dim_x;      // Transform dimension x
-  uint32_t dim_y;      // Transform dimension y
-  uint32_t dim_z;      // Transform dimension y
-  int32_t  pos_x;      // Transform position x
-  int32_t  pos_y;      // Transform position y
-  int32_t  pos_z;      // Transform position z
-  int32_t  piv_x;      // Transform pivot x
-  int32_t  piv_y;      // Transform pivot y
-  int32_t  piv_z;      // Transform pivot z
-  int32_t  rot_x;      // Transform rotation about x axis (degrees)
-  int32_t  rot_y;      // Transform rotation about y axis (degrees)
-  int32_t  rot_z;      // Transform rotation about z axis (degrees) 
-  bool     rev_x;      // Transform reverse x-axis
-  bool     rev_y;      // Transform reverse y-axis
-  bool     rev_z;      // Transform reverse z-axis
-  bool     ref_x;      // Transform reflect across x-centre
-  bool     ref_y;      // Transform reflect across y-centre
-  bool     ref_z;      // Transform reflect across z-centre
-  uint32_t led_i;        // Transform brightness (% of full brightness)  
+  uint8_t  id;         // Mappable ID
+  uint32_t dim_x;      // Mappable dimension x
+  uint32_t dim_y;      // Mappable dimension y
+  uint32_t dim_z;      // Mappable dimension z
+  int32_t  pos_x;      // Mappable position x
+  int32_t  pos_y;      // Mappable position y
+  int32_t  pos_z;      // Mappable position z
+  int32_t  rev_x;      // Mappable reverse over x
+  int32_t  rev_y;      // Mappable reverse over y
+  int32_t  rev_z;      // Mappable reverse over z  
+  bool     is_rev_x;   // Mappable reverse x
+  bool     is_rev_y;   // Mappable reverse y
+  bool     is_rev_z;   // Mappable reverse z   
+  int32_t  piv_x;      // Mappable pivot x
+  int32_t  piv_y;      // Mappable pivot y
+  int32_t  piv_z;      // Mappable pivot z
+  int32_t  rot_x;      // Mappable rotation about pivot x (degrees)
+  int32_t  rot_y;      // Mappable rotation about pivot y (degrees)
+  int32_t  rot_z;      // Mappable rotation about pivot z (degrees) 
+  int32_t  ref_x;      // Mappable reflect over x
+  int32_t  ref_y;      // Mappable reflect over y
+  int32_t  ref_z;      // Mappable reflect over z 
+  bool     is_ref_x;   // Mappable reflect x
+  bool     is_ref_y;   // Mappable reflect y
+  bool     is_ref_z;   // Mappable reflect z    
+  uint32_t led_i;      // Mappable intensity (% of parent/max intensity)  
 };
 
 struct MappableCalc{
@@ -101,19 +112,19 @@ struct MappableCalc{
 
 struct MatrixConfig{
 
-  Mappable panel;
-  Mappable matrix;
-  Mappable visual;
+  uint8_t   mac[6];            // Matrix MAC address
+  uint8_t   pin;               // Matrix SPI pin
 
-  uint8_t  matrix_pin;       // Matrix SPI pin
-  uint8_t  matrix_mac[6];    // Matrix MAC address
+  Mappable  panel;             // Panel mappable configuration
+  Mappable  matrix;            // Matrix mappable configuration
+  Mappable  visual;            // Visual mappable configuration
 
-  float    visual_inp_thr;
-  uint32_t visual_frm_ini;
-  uint32_t visual_frm_div;
-  uint32_t visual_frm_inc;
-  uint32_t visual_pat_sel;
-  HSVConfig   visual_hsv[3];
+  float     visual_inp_thr;
+  uint32_t  visual_frm_ini;
+  uint32_t  visual_frm_div;
+  uint32_t  visual_frm_inc;
+  uint32_t  visual_pat_sel;
+  HSVConfig visual_hsv[3];
 };
 
 struct MatrixCalc{
@@ -133,7 +144,6 @@ struct AnalyserData{
         uint32_t analyser_var_pss;
         float    analyser_var_bnd[64];
 };
-
 
 class LEDPanel{
 
