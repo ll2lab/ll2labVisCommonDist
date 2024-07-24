@@ -111,10 +111,13 @@ struct MapPre{
 
 struct SetCfg{
 };
+
 struct PnlCfg{
 };
+
 struct BrdCfg{
 };
+
 struct VisCfg{
   uint32_t  pat;       // Visual pattern
   uint32_t  bnd;       // Visual bands
@@ -126,41 +129,32 @@ struct VisCfg{
   float     max;       // Visual active maximum
   HSVCfg    hsv[3];    // Visual HSV component configs
 };
+
 struct MtxCfg{
 
   uint8_t   mac[6];    // Matrix MAC address
   uint8_t   pin;       // Matrix SPI pin
-
   struct{
-    SetCfg cfg;        // Set configuration
+    SetCfg   cfg;      // Set configuration
   } set;                
-
-    struct{
-    MapCfg map;        // Panel map
-    PnlCfg cfg;        // Panel configuration
+  struct{
+    MapCfg   map;      // Panel map
+    PnlCfg   cfg;      // Panel configuration
   } pnl;
-
-    struct{
-    MapCfg map;        // Board map
-    BrdCfg cfg;        // Board configuration
+  struct{
+    MapCfg   map;      // Board map
+    BrdCfg   cfg;      // Board configuration
   } brd;
-
-    struct{
-    MapCfg map;        // Visual map
-    VisCfg cfg;        // Visual configuration
+  struct{
+    MapCfg   map;      // Visual map
+    VisCfg   cfg;      // Visual configuration
   } vis;
 };
 
-struct MatrixCalc{
-  MapPre    panel;
-  MapPre    matrix;
-  MapPre    visual;
-};
-
 struct PanelControl{
-        bool     panel_rst;
-        bool     panel_run;  
-        uint32_t panel_frm_mrk;        
+  bool     panel_rst;
+  bool     panel_run;  
+  uint32_t panel_frm_mrk;        
 };
 
 struct AnalyserData{
