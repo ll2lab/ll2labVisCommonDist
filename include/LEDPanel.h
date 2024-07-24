@@ -48,55 +48,55 @@ struct PacketHeader{
 
 struct HSVConfig{                          // helper struct for component definition
 
-  uint32_t    hsv_hsv_drv;              // component driver
+  uint32_t drv;        // component driver
 
-  uint32_t    hsv_rng_ini;              // component range initial (0-255)
-  uint32_t    hsv_rng_min;              // component range minimum (0-255)
-  uint32_t    hsv_rng_max;              // component range maximum (0-255)
+  uint32_t ini;        // component range initial (0-255)
+  uint32_t rng_min;    // component range minimum (0-255)
+  uint32_t rng_max;    // component range maximum (0-255)
 
-  uint32_t    hsv_bnd_min;              // component led minimum (0-255)
-  uint32_t    hsv_bnd_max;              // component led maximum (0-255)
+  uint32_t fil_min;    // component led minimum (0-255)
+  uint32_t fil_max;    // component led maximum (0-255)
 
-  int32_t     hsv_bnd_del;              // component output delta per bin
-  int32_t     hsv_frm_del;              // component frame delta
-  float       hsv_frm_dcy;              // component frame decay multiplier
+  int32_t  bnd_del;    // component output delta per bin
+  int32_t  frm_del;    // component frame delta
+  float    dcy;        // component frame decay multiplier
 
-  bool        hsv_out_per;              // component persist value if > new fft value
+  bool     per;        // component persist value if > new fft value
 };
 
-struct Mappable{
-  uint8_t  id;         // Mappable ID
-  uint32_t dim_x;      // Mappable dimension x
-  uint32_t dim_y;      // Mappable dimension y
-  uint32_t dim_z;      // Mappable dimension z
-  int32_t  pos_x;      // Mappable position x
-  int32_t  pos_y;      // Mappable position y
-  int32_t  pos_z;      // Mappable position z
-  int32_t  rev_x;      // Mappable reverse over x
-  int32_t  rev_y;      // Mappable reverse over y
-  int32_t  rev_z;      // Mappable reverse over z  
-  int32_t  piv_x;      // Mappable pivot x
-  int32_t  piv_y;      // Mappable pivot y
-  int32_t  piv_z;      // Mappable pivot z
-  int32_t  rot_x;      // Mappable rotation about pivot x (degrees)
-  int32_t  rot_y;      // Mappable rotation about pivot y (degrees)
-  int32_t  rot_z;      // Mappable rotation about pivot z (degrees) 
-  int32_t  ref_x;      // Mappable reflect over x
-  int32_t  ref_y;      // Mappable reflect over y
-  int32_t  ref_z;      // Mappable reflect over z 
-  bool     is_rev_x;   // Mappable reverse x
-  bool     is_rev_y;   // Mappable reverse y
-  bool     is_rev_z;   // Mappable reverse z   
-  bool     is_rot_x;   // Mappable rotate x
-  bool     is_rot_y;   // Mappable rotate y
-  bool     is_rot_z;   // Mappable rotate z     
-  bool     is_ref_x;   // Mappable reflect x
-  bool     is_ref_y;   // Mappable reflect y
-  bool     is_ref_z;   // Mappable reflect z    
-  uint32_t led_i;      // Mappable intensity (% of parent/max intensity)  
+struct MapCfg{
+  uint8_t  id;         // MapCfg ID
+  uint32_t dim_x;      // MapCfg dimension x
+  uint32_t dim_y;      // MapCfg dimension y
+  uint32_t dim_z;      // MapCfg dimension z
+  int32_t  pos_x;      // MapCfg position x
+  int32_t  pos_y;      // MapCfg position y
+  int32_t  pos_z;      // MapCfg position z
+  int32_t  rev_x;      // MapCfg reverse over x
+  int32_t  rev_y;      // MapCfg reverse over y
+  int32_t  rev_z;      // MapCfg reverse over z  
+  int32_t  piv_x;      // MapCfg pivot x
+  int32_t  piv_y;      // MapCfg pivot y
+  int32_t  piv_z;      // MapCfg pivot z
+  int32_t  rot_x;      // MapCfg rotation about pivot x (degrees)
+  int32_t  rot_y;      // MapCfg rotation about pivot y (degrees)
+  int32_t  rot_z;      // MapCfg rotation about pivot z (degrees) 
+  int32_t  ref_x;      // MapCfg reflect over x
+  int32_t  ref_y;      // MapCfg reflect over y
+  int32_t  ref_z;      // MapCfg reflect over z 
+  bool     is_rev_x;   // MapCfg reverse x
+  bool     is_rev_y;   // MapCfg reverse y
+  bool     is_rev_z;   // MapCfg reverse z   
+  bool     is_rot_x;   // MapCfg rotate x
+  bool     is_rot_y;   // MapCfg rotate y
+  bool     is_rot_z;   // MapCfg rotate z     
+  bool     is_ref_x;   // MapCfg reflect x
+  bool     is_ref_y;   // MapCfg reflect y
+  bool     is_ref_z;   // MapCfg reflect z    
+  uint32_t led_i;      // MapCfg intensity (% of parent/max intensity)  
 };
 
-struct MappableCalc{
+struct MapPre{
   int32_t  pos_x0;
   int32_t  pos_x1;
   int32_t  pos_y0;
@@ -118,9 +118,9 @@ struct MatrixConfig{
   uint8_t   mac[6];            // Matrix MAC address
   uint8_t   pin;               // Matrix SPI pin
 
-  Mappable  panel;             // Panel mappable configuration
-  Mappable  matrix;            // Matrix mappable configuration
-  Mappable  visual;            // Visual mappable configuration
+  MapCfg    panel;             // Panel mappable configuration
+  MapCfg    matrix;            // Matrix mappable configuration
+  MapCfg    visual;            // Visual mappable configuration
 
   float     visual_inp_thr;
   uint32_t  visual_frm_ini;
@@ -132,9 +132,9 @@ struct MatrixConfig{
 };
 
 struct MatrixCalc{
-  MappableCalc panel;
-  MappableCalc matrix;
-  MappableCalc visual;
+  MapPre panel;
+  MapPre matrix;
+  MapPre visual;
 };
 
 struct PanelControl{
