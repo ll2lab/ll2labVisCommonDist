@@ -131,14 +131,24 @@ struct MtxCfg{
   uint8_t   mac[6];    // Matrix MAC address
   uint8_t   pin;       // Matrix SPI pin
 
-  MapCfg    pnlMap;    // Panel mappable configuration
-  MapCfg    brdMap;    // Matrix mappable configuration
-  MapCfg    visMap;    // Visual mappable configuration
+  struct{
+    SetCfg cfg;        // Set configuration
+  } set;                
 
-  SetCfg    setCfg;
-  PnlCfg    pnlCfg;
-  BrdCfg    brdCfg;
-  VisCfg    visCfg;
+    struct{
+    MapCfg map;        // Panel map
+    PnlCfg cfg;        // Panel configuration
+  } pnl;
+
+    struct{
+    MapCfg map;        // Board map
+    BrdCfg cfg;        // Board configuration
+  } brd;
+
+    struct{
+    MapCfg map;        // Visual map
+    VisCfg cfg;        // Visual configuration
+  } vis;
 };
 
 struct MatrixCalc{
