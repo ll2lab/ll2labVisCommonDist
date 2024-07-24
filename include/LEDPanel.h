@@ -75,9 +75,6 @@ struct Mappable{
   int32_t  rev_x;      // Mappable reverse over x
   int32_t  rev_y;      // Mappable reverse over y
   int32_t  rev_z;      // Mappable reverse over z  
-  bool     is_rev_x;   // Mappable reverse x
-  bool     is_rev_y;   // Mappable reverse y
-  bool     is_rev_z;   // Mappable reverse z   
   int32_t  piv_x;      // Mappable pivot x
   int32_t  piv_y;      // Mappable pivot y
   int32_t  piv_z;      // Mappable pivot z
@@ -87,6 +84,12 @@ struct Mappable{
   int32_t  ref_x;      // Mappable reflect over x
   int32_t  ref_y;      // Mappable reflect over y
   int32_t  ref_z;      // Mappable reflect over z 
+  bool     is_rev_x;   // Mappable reverse x
+  bool     is_rev_y;   // Mappable reverse y
+  bool     is_rev_z;   // Mappable reverse z   
+  bool     is_rot_x;   // Mappable rotate x
+  bool     is_rot_y;   // Mappable rotate y
+  bool     is_rot_z;   // Mappable rotate z     
   bool     is_ref_x;   // Mappable reflect x
   bool     is_ref_y;   // Mappable reflect y
   bool     is_ref_z;   // Mappable reflect z    
@@ -121,6 +124,7 @@ struct MatrixConfig{
 
   float     visual_inp_thr;
   uint32_t  visual_frm_ini;
+  uint32_t  visual_frm_stp;
   uint32_t  visual_frm_div;
   uint32_t  visual_frm_inc;
   uint32_t  visual_pat_sel;
@@ -152,7 +156,7 @@ class LEDPanel{
     uint32_t  dim_x;    // Panel width
     uint32_t  dim_y;    // Panel height
     uint32_t  dim_z;    // Panel depth
-    uint8_t   led_i;      // Panel brightness %
+    uint8_t   led_i;    // Panel brightness %
 
          LEDPanel(uint32_t panel_dim_x, uint32_t panel_dim_y, uint32_t panel_dim_z);
         ~LEDPanel();
