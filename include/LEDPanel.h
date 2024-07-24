@@ -46,7 +46,7 @@ struct PacketHeader{
 #define VIS_HSV_SAT   1UL
 #define VIS_HSV_VAL   2UL
 
-struct HSVConfig{                          // helper struct for component definition
+struct HSVCfg{                          // helper struct for component definition
 
   uint32_t drv;        // component driver
   uint32_t ini;        // component range initial (0-255)
@@ -109,26 +109,36 @@ struct MapPre{
   uint8_t  led_i;      // MapPre absolute intensity
 };
 
-struct MatrixConfig{
-
-  uint8_t   mac[6];    // Matrix MAC address
-  uint8_t   pin;       // Matrix SPI pin
-
-  MapCfg    panel;     // Panel mappable configuration
-  MapCfg    matrix;    // Matrix mappable configuration
-  MapCfg    visual;    // Visual mappable configuration
-
+struct SetCfg{
+};
+struct PnlCfg{
+};
+struct BrdCfg{
+};
+struct VisCfg{
   uint32_t  pat;       // Visual pattern
   uint32_t  bnd;       // Visual bands
-  uint32_t  stt;       // Vsiaul frame start
+  uint32_t  stt;       // Visual frame start
   uint32_t  stp;       // Visual frame stop
   uint32_t  inc;       // Visual frame increment per loop
   uint32_t  div;       // Visual frame divisor
   float     min;       // Visual active minimum
   float     max;       // Visual active maximum
+  HSVCfg    hsv[3];    // Visual HSV component configs
+};
+struct MtxCfg{
 
+  uint8_t   mac[6];    // Matrix MAC address
+  uint8_t   pin;       // Matrix SPI pin
 
-  HSVConfig visual_hsv[3];
+  MapCfg    pnlMap;    // Panel mappable configuration
+  MapCfg    brdMap;    // Matrix mappable configuration
+  MapCfg    visMap;    // Visual mappable configuration
+
+  SetCfg    setCfg;
+  PnlCfg    pnlCfg;
+  BrdCfg    brdCfg;
+  VisCfg    visCfg;
 };
 
 struct MatrixCalc{
@@ -163,7 +173,7 @@ class LEDPanel{
 
     void  addMatrix(const char* mac, uint32_t matrix_x, uint32_t matrix_y, uint32_t matrix_z, uint32_t matrix_w, uint32_t matrix_h, uint32_t matrix_d);
 
-    MatrixConfig matrix[4];
+    MtxCfg matrix[4];
     uint32_t  matrix_next;
 };
 
