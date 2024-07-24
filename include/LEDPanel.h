@@ -118,12 +118,16 @@ struct MatrixConfig{
   MapCfg    matrix;    // Matrix mappable configuration
   MapCfg    visual;    // Visual mappable configuration
 
-  float     visual_inp_thr;
-  uint32_t  visual_frm_ini;
-  uint32_t  visual_frm_stp;
-  uint32_t  visual_frm_div;
-  uint32_t  visual_frm_inc;
-  uint32_t  visual_pat_sel;
+  uint32_t  pat;       // Visual pattern
+  uint32_t  bnd;       // Visual bands
+  uint32_t  stt;       // Vsiaul frame start
+  uint32_t  stp;       // Visual frame stop
+  uint32_t  inc;       // Visual frame increment per loop
+  uint32_t  div;       // Visual frame divisor
+  float     min;       // Visual active minimum
+  float     max;       // Visual active maximum
+
+
   HSVConfig visual_hsv[3];
 };
 
