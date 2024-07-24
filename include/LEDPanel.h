@@ -49,18 +49,14 @@ struct PacketHeader{
 struct HSVConfig{                          // helper struct for component definition
 
   uint32_t drv;        // component driver
-
   uint32_t ini;        // component range initial (0-255)
   uint32_t rng_min;    // component range minimum (0-255)
   uint32_t rng_max;    // component range maximum (0-255)
-
   uint32_t fil_min;    // component led minimum (0-255)
   uint32_t fil_max;    // component led maximum (0-255)
-
   int32_t  bnd_del;    // component output delta per bin
   int32_t  frm_del;    // component frame delta
   float    dcy;        // component frame decay multiplier
-
   bool     per;        // component persist value if > new fft value
 };
 
@@ -93,34 +89,34 @@ struct MapCfg{
   bool     is_ref_x;   // MapCfg reflect x
   bool     is_ref_y;   // MapCfg reflect y
   bool     is_ref_z;   // MapCfg reflect z    
-  uint32_t led_i;      // MapCfg intensity (% of parent/max intensity)  
+  uint32_t led_i;      // MapCfg relative intensity (% of parent/max intensity)  
 };
 
 struct MapPre{
-  int32_t  pos_x0;
-  int32_t  pos_x1;
-  int32_t  pos_y0;
-  int32_t  pos_y1;
-  int32_t  pos_z0;
-  int32_t  pos_z1;  
-  float    rot_x_sin;  
-  float    rot_y_sin;  
-  float    rot_z_sin;  
-  float    rot_x_cos;  
-  float    rot_y_cos;  
-  float    rot_z_cos; 
-  uint32_t led_n;
-  uint8_t  led_i;
+  int32_t  pos_x0;     // MapPre position x0
+  int32_t  pos_x1;     // MapPre position x1
+  int32_t  pos_y0;     // MapPre position y0
+  int32_t  pos_y1;     // MapPre position y1
+  int32_t  pos_z0;     // MapPre position z0
+  int32_t  pos_z1;     // MapPre position z1
+  float    rot_x_sin;  // MapPre sin(x-axis rotation)  
+  float    rot_y_sin;  // MapPre sin(y-axis rotation)  
+  float    rot_z_sin;  // MapPre sin(z-axis rotation)  
+  float    rot_x_cos;  // MapPre cos(x-axis rotation)  
+  float    rot_y_cos;  // MapPre cos(y-axis rotation)  
+  float    rot_z_cos;  // MapPre cos(z-axis rotation) 
+  uint32_t led_n;      // MapPre number of leds
+  uint8_t  led_i;      // MapPre absolute intensity
 };
 
 struct MatrixConfig{
 
-  uint8_t   mac[6];            // Matrix MAC address
-  uint8_t   pin;               // Matrix SPI pin
+  uint8_t   mac[6];    // Matrix MAC address
+  uint8_t   pin;       // Matrix SPI pin
 
-  MapCfg    panel;             // Panel mappable configuration
-  MapCfg    matrix;            // Matrix mappable configuration
-  MapCfg    visual;            // Visual mappable configuration
+  MapCfg    panel;     // Panel mappable configuration
+  MapCfg    matrix;    // Matrix mappable configuration
+  MapCfg    visual;    // Visual mappable configuration
 
   float     visual_inp_thr;
   uint32_t  visual_frm_ini;
@@ -132,9 +128,9 @@ struct MatrixConfig{
 };
 
 struct MatrixCalc{
-  MapPre panel;
-  MapPre matrix;
-  MapPre visual;
+  MapPre    panel;
+  MapPre    matrix;
+  MapPre    visual;
 };
 
 struct PanelControl{
