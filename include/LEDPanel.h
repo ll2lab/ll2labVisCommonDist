@@ -168,16 +168,10 @@ struct AnalyserData{
 class LEDPanel{
 
   public:
+    LEDPanel();
+   ~LEDPanel();
 
-    uint32_t  dim_x;    // Panel width
-    uint32_t  dim_y;    // Panel height
-    uint32_t  dim_z;    // Panel depth
-    uint8_t   led_i;    // Panel brightness %
-
-         LEDPanel(uint32_t panel_dim_x, uint32_t panel_dim_y, uint32_t panel_dim_z);
-        ~LEDPanel();
-
-    void  addMatrix(const char* mac, uint32_t matrix_x, uint32_t matrix_y, uint32_t matrix_z, uint32_t matrix_w, uint32_t matrix_h, uint32_t matrix_d);
+    void  addMatrix(const char* mac);
 
     MtxCfg matrix[4];
     uint32_t  matrix_next;
