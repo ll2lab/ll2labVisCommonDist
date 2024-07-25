@@ -127,6 +127,8 @@ struct VisCfg{
   uint32_t  div;       // Visual frame divisor
   float     min;       // Visual active minimum
   float     max;       // Visual active maximum
+  float     dcy;       // Visual value decay
+  bool      per;       // Visual value persist
   HSVCfg    hsv[3];    // Visual HSV component configs
 };
 
