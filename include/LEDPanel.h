@@ -161,7 +161,6 @@ struct PanelControl{
 
 struct AnalyserData{
         uint32_t analyser_frm_num;
-        uint32_t analyser_var_pss;
         float    analyser_var_bnd[64];
 };
 
