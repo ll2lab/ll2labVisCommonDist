@@ -105,6 +105,27 @@ struct PacketHeader{                     // ESP_Now packet header
 #define VIS_HSV_SAT              1UL     // HSV saturation
 #define VIS_HSV_VAL              2UL     // HSV value
 
+// Component driver configuration
+#define VIS_DRV_CON              0UL     // VIsual HSV constant driver
+#define VIS_DRV_AUT              1UL     // VIsual HSV automatic driver
+#define VIS_DRV_FFT              2UL     // VIsual HSV fft driver
+
+// Pattern configuration                 // Visual patterns
+#define VIS_PAT_NORSP            0UL      
+#define VIS_PAT_STAND            1UL
+#define VIS_PAT_EVENS            3UL
+#define VIS_PAT_SPLIT            4UL
+#define VIS_PAT_LIMIT            5UL
+#define VIS_PAT_SHOTS            6UL
+#define VIS_PAT_BUMPS            7UL
+#define VIS_PAT_PINGS            8UL
+#define VIS_PAT_SHOT2            9UL
+#define VIS_PAT_DIAGS            10UL
+#define VIS_PAT_TEST             11UL
+
+#define LED_ANI_SPAN             0UL     // Animation is span
+#define LED_ANI_PULSE            1UL     // Animation is pulse
+
 struct MapConfig{
   uint32_t dim_x;                        // Map dimension x
   uint32_t dim_y;                        // Map dimension y
@@ -175,7 +196,7 @@ struct VisualConfig{                     // Visual configuration
   float     max;                         // Visual active maximum
   float     dcy;                         // Visual value decay
   bool      per;                         // Visual value persist
-  HSVConfig hsv[3];                      // Visual HSV component configs
+  HSVConfig hsv[VIS_HSV_NUM];            // Visual HSV component configs
 };
 
 struct MatrixConfig{                     // Matrix configuration
@@ -203,5 +224,16 @@ struct AnalyserData{                     // Analyser data
   uint32_t frm;                          // Analyser frame number
   float    analyser_var_bnd[ANA_MAX_BANDS];         // Analyser band values
 };
+
+
+// Utilities
+
+#ifndef min
+#define min(a,b) (((a) < (b)) ? (a) : (b))
+#endif
+
+#ifndef max
+#define max(a,b) (((a) > (b)) ? (a) : (b))
+#endif
 
 #endif
