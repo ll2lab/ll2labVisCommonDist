@@ -9,10 +9,10 @@
 #define COMM_INTER_BAUD          460800UL        // Common device to device serial baud rate  
 #define COMM_FRAME_SOF           217UL           // Common device to device serial Start Of Frame  
 
-#define CTRL_HOST_IPADDR         192,168, 50,239 // Controller IP address
-#define CTRL_HOST_IPMASK         255,255,255,  0 // Controller IP network mask
-#define CTRL_HOST_IPGTWY         192,168, 50,  1 // Controller IP gatway
-#define CTRL_HOST_HTTPPORT       80UL            // Controller http port
+#define CTRL_HOST_IP_ADDRESS     192,168, 50,239 // Controller IP address
+#define CTRL_HOST_IP_NETMASK     255,255,255,  0 // Controller IP network mask
+#define CTRL_HOST_IP_GATEWAY     192,168, 50,  1 // Controller IP gatway
+#define CTRL_HOST_HTTP_PORT      80UL            // Controller http port
 #define CTRL_HOST_SERIAL         Serial          // Controller to Host serial connection
 #define CTRL_HOST_BAUD           COMM_HOST_BAUD  // Controller to Host serial baud rate
 #define CTRL_SEND_SERIAL         Serial1         // Controller to Sender serial connection
@@ -106,7 +106,6 @@ struct PacketHeader{                     // ESP_Now packet header
 #define VIS_HSV_VAL              2UL     // HSV value
 
 struct MapConfig{
-  uint8_t  id;                           // Map ID
   uint32_t dim_x;                        // Map dimension x
   uint32_t dim_y;                        // Map dimension y
   uint32_t dim_z;                        // Map dimension z
