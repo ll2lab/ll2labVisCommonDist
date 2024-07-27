@@ -8,11 +8,6 @@
 #define FRAME_TX_BROADCAST       0UL   // Frame is broadcast
 #define FRAME_TX_UNICAST         1UL   // Frame is unicast
 
-#define FRAME_TYPE_COUNT         3UL   // Frame type count
-#define FRAME_TYPE_PANELCONTROL  0UL   // Panel control frame
-#define FRAME_TYPE_MATRIXCONFIG  1UL   // Matrix config frame
-#define FRAME_TYPE_ANALYSERDATA  2UL   // Analyser data frame 
-
 struct FrameConfig{                    // Frame config (calculated)
   uint32_t frameType;                  // Frame type
   uint32_t frameHeaderSize;            // Frame header size (bytes)
@@ -39,7 +34,12 @@ struct PacketHeader{                   // ESP_Now packet header
 };
 
 
-// SHARED FRAME CONSTANTS AND STRUCTURES
+// SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
+
+#define FRAME_TYPE_COUNT         3UL   // Frame type count
+#define FRAME_TYPE_PANELCONTROL  0UL   // Panel control frame
+#define FRAME_TYPE_MATRIXCONFIG  1UL   // Matrix config frame
+#define FRAME_TYPE_ANALYSERDATA  2UL   // Analyser data frame 
 
 #define LED_MAP_SET              0UL   // Map for set (not yet used)
 #define LED_MAP_PANEL            1UL   // Map for panel
@@ -50,6 +50,7 @@ struct PacketHeader{                   // ESP_Now packet header
 #define VIS_HSV_HUE              0UL   // HSV hue
 #define VIS_HSV_SAT              1UL   // HSV saturation
 #define VIS_HSV_VAL              2UL   // HSV value
+
 struct MapConfig{
   uint8_t  id;                         // Map ID
   uint32_t dim_x;                      // Map dimension x
