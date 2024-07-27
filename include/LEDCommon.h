@@ -9,6 +9,9 @@
 #define COMM_INTER_BAUD          460800UL        // Common device to device serial baud rate  
 #define COMM_FRAME_SOF           217UL           // Common device to device serial Start Of Frame  
 
+#define CTRL_HOST_IPADDR         192,168, 50,239 // Controller IP address
+#define CTRL_HOST_IPMASK         255,255,255,  0 // Controller IP network mask
+#define CTRL_HOST_IPGTWY         192,168, 50,  1 // Controller IP gatway
 #define CTRL_HOST_HTTPPORT       80UL            // Controller http port
 #define CTRL_HOST_SERIAL         Serial          // Controller to Host serial connection
 #define CTRL_HOST_BAUD           COMM_HOST_BAUD  // Controller to Host serial baud rate
@@ -19,6 +22,8 @@
 #define SEND_HOST_BAUD           COMM_HOST_BAUD  // Sender to Host serial baud rate
 #define SEND_CTRL_SERIAL         Serial2         // Sender to Controller serial connection   
 #define SEND_CTRL_BAUD           COMM_INTER_BAUD // Sender to Controller serial baud rate
+#define SEND_LOCAL_MAC           0x94,0x3C,0xC6,0x32,0xE3,0x38 // Sender MAC address
+#define SEND_BROADCAST_MAC       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF // Sender MAC broadcast
 
 #define ESPNOW_PACKET_MAX        250UL           // Packet size limit for ESP_NOW
 
@@ -27,8 +32,8 @@
 
 // COMMON FRAME CONSTANTS AND STRUCTURES
 
-#define FRAME_TX_BROADCAST       0UL     // Frame is broadcast
-#define FRAME_TX_UNICAST         1UL     // Frame is unicast
+#define FRAME_TX_BROADCAST       0UL                     // Frame is broadcast
+#define FRAME_TX_UNICAST         1UL                     // Frame is unicast
 
 struct FrameConfig{                      // Frame config (calculated)
   uint32_t frameType;                    // Frame type
@@ -79,6 +84,9 @@ struct PacketHeader{                     // ESP_Now packet header
 #define CTRL_SEND_BG_PERIOD      360UL   // Controller period between background matrix configuration sends (x data frame sends)
 #define RECV_DATA_TIMEOUT        1000UL  // Reciever data connection lost time out
 
+// MEMORY ALLOCATION 
+
+#define ANA_MAX_BANDS           64UL     // Analsyer maximum bands
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
 
@@ -194,7 +202,7 @@ struct MatrixConfig{                     // Matrix configuration
 
 struct AnalyserData{                     // Analyser data
   uint32_t frm;                          // Analyser frame number
-  float    analyser_var_bnd[64];         // Analyser band values
+  float    analyser_var_bnd[ANA_MAX_BANDS];         // Analyser band values
 };
 
 #endif
