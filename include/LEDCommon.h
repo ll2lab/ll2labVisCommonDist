@@ -187,7 +187,8 @@ struct BoardConfig{                      // Board configuration
 
 struct VisualConfig{                     // Visual configuration
   uint32_t  pat;                         // Visual pattern
-  uint32_t  bnd;                         // Visual bands
+  uint32_t  low;                         // Visual band low
+  uint32_t  hgh;                         // Visual band high
   uint32_t  stt;                         // Visual frame start
   uint32_t  stp;                         // Visual frame stop
   uint32_t  inc;                         // Visual frame increment per loop
