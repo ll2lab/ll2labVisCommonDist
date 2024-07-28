@@ -80,7 +80,6 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // DYNAMICS CONTROL
 
-#define CTRL_SEND_FG_PERIOD      25UL    // Controller period between foreground data frame sends (ms)
 #define CTRL_SEND_BG_PERIOD      360UL   // Controller period between background matrix configuration sends (x data frame sends)
 #define RECV_DATA_TIMEOUT        1000UL  // Reciever data connection lost time out
 
