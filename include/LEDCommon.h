@@ -223,7 +223,7 @@ struct MatrixConfig{                     // Matrix configuration
 
 struct AnalyserData{                     // Analyser data
   uint32_t frm;                          // Analyser frame number
-  float    analyser_var_bnd[ANA_MAX_BANDS];         // Analyser band values
+  float    bnd_val[ANA_MAX_BANDS];       // Analyser band values
 };
 
 
