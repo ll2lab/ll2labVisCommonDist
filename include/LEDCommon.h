@@ -176,6 +176,7 @@ struct HSVConfig{                        // HSV component configuration
 };
 
 struct SetConfig{                        // Set configuration
+  bool     sta;                          // Statistics logging on/off
 };
 
 struct PanelConfig{                      // Panel configuration
