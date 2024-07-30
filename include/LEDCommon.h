@@ -122,16 +122,14 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // Pattern configuration                 // Visual patterns
 #define VIS_PAT_NORSP            0UL      
-#define VIS_PAT_STAND            1UL
-#define VIS_PAT_EVENS            3UL
-#define VIS_PAT_SPLIT            4UL
-#define VIS_PAT_LIMIT            5UL
-#define VIS_PAT_SHOTS            6UL
-#define VIS_PAT_BUMPS            7UL
-#define VIS_PAT_PINGS            8UL
-#define VIS_PAT_SHOT2            9UL
-#define VIS_PAT_DIAGS            10UL
-#define VIS_PAT_TEST             11UL
+#define VIS_PAT_AMPLI            1UL
+#define VIS_PAT_EVENS            2UL
+#define VIS_PAT_SHOTS            3UL
+#define VIS_PAT_SHOT2            4UL
+#define VIS_PAT_ANGLE            5UL
+#define VIS_PAT_SPLIT            6UL
+#define VIS_PAT_LIMIT            7UL
+#define VIS_PAT_CLOCK            8UL
 
 #define LED_ANI_SPAN             0UL     // Animation is span
 #define LED_ANI_PULSE            1UL     // Animation is pulse
