@@ -129,7 +129,8 @@ struct PacketHeader{                     // ESP_Now packet header
 #define VIS_PAT_ANGLE            5UL
 #define VIS_PAT_SPLIT            6UL
 #define VIS_PAT_LIMIT            7UL
-#define VIS_PAT_CLOCK            8UL
+#define VIS_PAT_FLEXI            8UL
+#define VIS_PAT_CLOCK            9UL
 
 #define LED_ANI_SPAN             0UL     // Animation is span
 #define LED_ANI_PULSE            1UL     // Animation is pulse
@@ -206,6 +207,18 @@ struct VisualConfig{                     // Visual configuration
   float     max;                         // Visual active maximum
   float     dcy;                         // Visual value decay
   bool      per;                         // Visual value persist
+  int32_t   pls_x;                       // Pulse initial x co-ordinate
+  int32_t   pls_y;                       // Pulse initial y co-ordinate
+  int32_t   pls_z;                       // Pulse initial z co-ordinate
+  int32_t   pls_l;                       // Pulse initial length
+  uint32_t  pls_f;                       // Pulse frame duration
+  float     pls_dx;                      // Pulse frame x delta
+  float     pls_dy;                      // Pulse frame y delta
+  float     pls_dz;                      // Pulse frame z delta
+  float     pls_dh;                      // Pulse frame hue delta
+  float     pls_ds;                      // Pulse frame saturation delta
+  float     pls_dv;                      // Pulse frame value delta
+  float     pls_dl;                      // Pulse length value delta
   HSVConfig hsv[VIS_HSV_NUM];            // Visual HSV component configs
 };
 
