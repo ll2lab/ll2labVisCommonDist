@@ -3,7 +3,13 @@
 #ifndef LEDCOMMON_H
 #define LEDCOMMON_H
 
+// COMMON CONTROL CONSTANTS
+
+#define WDT_TIMEOUT              3UL             // Watchdog timeout 
+
 // COMMON COMMS CONSTANTS
+
+#define UI_HOST_HTTP_URL         "http://visualiser.labservice.ll2.network" // Configuration UI http URL
 
 #define COMM_HOST_BAUD           115200UL        // Common device to host serial baud rate
 #define COMM_INTER_BAUD          460800UL        // Common device to device serial baud rate  
@@ -13,6 +19,8 @@
 #define CTRL_HOST_IP_NETMASK     255,255,255,  0 // Controller IP network mask
 #define CTRL_HOST_IP_GATEWAY     192,168, 50,  1 // Controller IP gatway
 #define CTRL_HOST_HTTP_PORT      80UL            // Controller http port
+#define CTRL_HOST_HTTP_URL       "http://viscontrol.labservice.ll2.network" // Controller http URL
+
 #define CTRL_HOST_SERIAL         Serial          // Controller to Host serial connection
 #define CTRL_HOST_BAUD           COMM_HOST_BAUD  // Controller to Host serial baud rate
 #define CTRL_SEND_SERIAL         Serial1         // Controller to Sender serial connection
@@ -22,6 +30,7 @@
 #define SEND_HOST_BAUD           COMM_HOST_BAUD  // Sender to Host serial baud rate
 #define SEND_CTRL_SERIAL         Serial2         // Sender to Controller serial connection   
 #define SEND_CTRL_BAUD           COMM_INTER_BAUD // Sender to Controller serial baud rate
+
 #define SEND_LOCAL_MAC           0x94,0x3C,0xC6,0x32,0xE3,0x38 // Sender MAC address
 #define SEND_BROADCAST_MAC       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF // Sender MAC broadcast
 
@@ -32,8 +41,8 @@
 
 // COMMON FRAME CONSTANTS AND STRUCTURES
 
-#define FRAME_TX_BROADCAST       0UL                     // Frame is broadcast
-#define FRAME_TX_UNICAST         1UL                     // Frame is unicast
+#define FRAME_TX_BROADCAST       0UL     // Frame is broadcast
+#define FRAME_TX_UNICAST         1UL     // Frame is unicast
 
 struct FrameConfig{                      // Frame config (calculated)
   uint32_t frameType;                    // Frame type
@@ -80,12 +89,14 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // DYNAMICS CONTROL
 
-#define CTRL_SEND_BG_PERIOD      360UL   // Controller period between background matrix configuration sends (x data frame sends)
+#define CTRL_SEND_BG_PERIOD      50UL    // Controller period between background matrix configuration sends (x data frame sends)
 #define RECV_DATA_TIMEOUT        1000UL  // Reciever data connection lost time out
+
 
 // MEMORY ALLOCATION 
 
-#define ANA_MAX_BANDS           64UL     // Analsyer maximum bands
+#define ANA_MAX_BANDS            64UL    // Analsyer maximum bands
+
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
 
@@ -156,10 +167,10 @@ struct MapConfig{
   uint32_t led_i;                        // Map relative intensity (% of parent/max intensity)  
 };
 
-struct PanelControl{                      // Panel control
-  bool     rst;                           // Reset
-  bool     run;                           // Run
-  uint32_t mrk;                           // Run frame mark
+struct PanelControl{                     // Panel control
+  bool     rst;                          // Reset
+  bool     run;                          // Run
+  uint32_t mrk;                          // Run frame mark
 };
 
 struct HSVConfig{                        // HSV component configuration
