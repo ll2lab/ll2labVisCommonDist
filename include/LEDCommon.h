@@ -196,6 +196,7 @@ struct BoardConfig{                      // Board configuration
 
 struct VisualConfig{                     // Visual configuration
   uint32_t  pat;                         // Visual pattern
+  uint32_t  smp;                         // Visual samples
   uint32_t  low;                         // Visual band low
   uint32_t  hgh;                         // Visual band high
   uint32_t  stt;                         // Visual frame start
@@ -206,6 +207,9 @@ struct VisualConfig{                     // Visual configuration
   float     max;                         // Visual active maximum
   float     dcy;                         // Visual value decay
   bool      per;                         // Visual value persist
+  bool      smp_x;                       // Visual sample drives x
+  bool      smp_y;                       // Visual sample drives y
+  bool      smp_z;                       // Visual sample drives z
   int32_t   pls_x;                       // Pulse initial x co-ordinate
   int32_t   pls_y;                       // Pulse initial y co-ordinate
   int32_t   pls_z;                       // Pulse initial z co-ordinate
