@@ -31,9 +31,8 @@
 #define SEND_CTRL_SERIAL         Serial2         // Sender to Controller serial connection   
 #define SEND_CTRL_BAUD           COMM_INTER_BAUD // Sender to Controller serial baud rate
 
-#define SEND_LOCAL_MAC           0x94,0x3C,0xC6,0x32,0xE3,0x38 // Sender MAC address
-#define SEND_BROADCAST_MAC       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF // Sender MAC broadcast
-
+#define ESPNOW_SEND_MAC          0x94,0x3C,0xC6,0x32,0xE3,0x38 // Sender MAC address
+#define ESPNOW_BROADCAST_MAC     0xFF,0xFF,0xFF,0xFF,0xFF,0xFF // Sender MAC broadcast
 #define ESPNOW_PACKET_MAX        250UL           // Packet size limit for ESP_NOW
 
 #define RECV_LED_PIN             23UL            // ESP32 LED matrix pin
@@ -80,7 +79,7 @@ struct PacketHeader{                     // ESP_Now packet header
 // PERFORMANCE CONTROL
 
 #define CTRL_PERF                true    // Controller performance measurement on/off
-#define CTRL_PERF_PERIOD         256UL   // Controller performance measurement period (x data frame sends)
+#define CTRL_PERF_PERIOD         10000UL // Controller performance measurement period (ms)
 #define SEND_PERF                true    // Sender performance measurement on/off
 #define SEND_PERF_PERIOD         10000UL // Sender performance measurement period (ms)
 #define RECV_PERF                true    // Receiver performance measurement on/off
@@ -89,7 +88,7 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // DYNAMICS CONTROL
 
-#define CTRL_SEND_BG_PERIOD      50UL    // Controller period between background matrix configuration sends (x data frame sends)
+#define CTRL_SEND_BG_PERIOD      250UL   // Controller period between background matrix configuration sends (x data frame sends)
 #define RECV_DATA_TIMEOUT        1000UL  // Reciever data connection lost time out
 
 
