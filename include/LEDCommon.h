@@ -44,7 +44,8 @@
 #define FRAME_TX_UNICAST         1UL     // Frame is unicast
 
 struct FrameConfig{                      // Frame config (calculated)
-  uint32_t frameType;                    // Frame type
+  uint32_t frameType;                    // Frame type 
+  uint32_t frameTypeSize;                // Frame type size (bytes)
   uint32_t frameHeaderSize;              // Frame header size (bytes)
   uint32_t frameDataSize;                // Frame data size (bytes)
   uint32_t frameTotalSize;               // Frame total size (bytes)
@@ -99,10 +100,11 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
 
-#define FRAME_TYPE_COUNT         3UL     // Frame type count
+#define FRAME_TYPE_COUNT         4UL     // Frame type count
 #define FRAME_TYPE_PANELCONTROL  0UL     // Panel control frame
 #define FRAME_TYPE_MATRIXCONFIG  1UL     // Matrix config frame
-#define FRAME_TYPE_ANALYSERDATA  2UL     // Analyser data frame 
+#define FRAME_TYPE_PULSECONFIG   2UL     // Pulse config frame 
+#define FRAME_TYPE_ANALYSERDATA  3UL     // Analyser data frame 
 
 #define LED_MAP_SET              0UL     // Map for set (not yet used)
 #define LED_MAP_PANEL            1UL     // Map for panel
@@ -123,16 +125,16 @@ struct PacketHeader{                     // ESP_Now packet header
 #define VIS_PAT_NORSP            0UL      
 #define VIS_PAT_AMPLI            1UL
 #define VIS_PAT_EVENS            2UL
-#define VIS_PAT_SHOTS            3UL
-#define VIS_PAT_SHOT2            4UL
-#define VIS_PAT_ANGLE            5UL
-#define VIS_PAT_SPLIT            6UL
-#define VIS_PAT_LIMIT            7UL
 #define VIS_PAT_FLEXI            8UL
 #define VIS_PAT_CLOCK            9UL
 
+// Animation configuration
 #define LED_ANI_SPAN             0UL     // Animation is span
 #define LED_ANI_PULSE            1UL     // Animation is pulse
+
+// Complexity limits
+#define SCN_VIS_MAX              9       // Max visuals per scene
+#define VIS_PLS_MAX              9       // Max pulses per visual
 
 struct MapConfig{
   uint32_t dim_x;                        // Map dimension x
@@ -185,13 +187,16 @@ struct HSVConfig{                        // HSV component configuration
 };
 
 struct SetConfig{                        // Set configuration
+  uint8_t   id;                          // Set id
   bool     sta;                          // Statistics logging on/off
 };
 
 struct PanelConfig{                      // Panel configuration
+  uint8_t   id;                          // Panel id in set
 };
 
 struct BoardConfig{                      // Board configuration
+  uint8_t   id;                          // Board id in panel
 };
 
 struct VisualConfig{                     // Visual configuration
@@ -207,9 +212,14 @@ struct VisualConfig{                     // Visual configuration
   float     max;                         // Visual active maximum
   float     dcy;                         // Visual value decay
   bool      per;                         // Visual value persist
-  bool      smp_x;                       // Visual sample drives x
-  bool      smp_y;                       // Visual sample drives y
-  bool      smp_z;                       // Visual sample drives z
+  HSVConfig hsv[VIS_HSV_NUM];            // Visual HSV component configs
+};
+
+struct PulseConfig{
+  uint8_t   id;                          // Pulse id in visual
+  bool      is_smp_x;                    // Pulse x is sample driver
+  bool      is_smp_y;                    // Pulse y is sample driver
+  bool      is_smp_z;                    // Pulse z is sample driver
   int32_t   pls_x;                       // Pulse initial x co-ordinate
   int32_t   pls_y;                       // Pulse initial y co-ordinate
   int32_t   pls_z;                       // Pulse initial z co-ordinate
@@ -222,7 +232,6 @@ struct VisualConfig{                     // Visual configuration
   float     pls_ds;                      // Pulse frame saturation delta
   float     pls_dv;                      // Pulse frame value delta
   float     pls_dl;                      // Pulse length value delta
-  HSVConfig hsv[VIS_HSV_NUM];            // Visual HSV component configs
 };
 
 struct MatrixConfig{                     // Matrix configuration
