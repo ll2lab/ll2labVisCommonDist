@@ -89,7 +89,7 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // DYNAMICS CONTROL
 
-#define CTRL_SEND_BG_PERIOD      250UL   // Controller period between background matrix configuration sends (x data frame sends)
+#define CTRL_SEND_BG_PERIOD      2500UL  // Controller period between background matrix configuration sends (x data frame sends)
 #define RECV_DATA_TIMEOUT        1000UL  // Reciever data connection lost time out
 
 
@@ -100,11 +100,15 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
 
-#define FRAME_TYPE_COUNT         4UL     // Frame type count
-#define FRAME_TYPE_PANELCONTROL  0UL     // Panel control frame
-#define FRAME_TYPE_MATRIXCONFIG  1UL     // Matrix config frame
-#define FRAME_TYPE_PULSECONFIG   2UL     // Pulse config frame 
-#define FRAME_TYPE_ANALYSERDATA  3UL     // Analyser data frame 
+#define FRAME_TYPE_COUNT         8UL     // Frame type count
+#define FRAME_TYPE_ANALYSERDATA  0UL     // Analyser data frame 
+#define FRAME_TYPE_PANELCONTROL  1UL     // Panel control frame
+#define FRAME_TYPE_SETCONFIG     2UL     // Set config frame
+#define FRAME_TYPE_PANELCONFIG   3UL     // Panel config frame
+#define FRAME_TYPE_BOARDCONFIG   4UL     // Board config frame
+#define FRAME_TYPE_SCENECONFIG   5UL     // Scene config frame
+#define FRAME_TYPE_VISUALCONFIG  6UL     // Visual config frame
+#define FRAME_TYPE_PULSECONFIG   7UL     // Pulse config frame 
 
 #define LED_MAP_SET              0UL     // Map for set (not yet used)
 #define LED_MAP_PANEL            1UL     // Map for panel
@@ -171,6 +175,7 @@ struct PanelControl{                     // Panel control
   bool     rst;                          // Reset
   bool     run;                          // Run
   uint32_t mrk;                          // Run frame mark
+  bool     dmp;                          // Dump configuration to serial
 };
 
 struct HSVConfig{                        // HSV component configuration
@@ -188,15 +193,22 @@ struct HSVConfig{                        // HSV component configuration
 
 struct SetConfig{                        // Set configuration
   uint8_t   id;                          // Set id
-  bool     sta;                          // Statistics logging on/off
+  bool      sta;                          // Statistics logging on/off
 };
 
 struct PanelConfig{                      // Panel configuration
   uint8_t   id;                          // Panel id in set
 };
 
+
 struct BoardConfig{                      // Board configuration
   uint8_t   id;                          // Board id in panel
+  uint8_t   mac[6];                      // Board MAC address
+  uint8_t   pin;                         // Board SPI pin  
+};
+
+struct SceneConfig{                      // Scene configuration
+  uint8_t   id;                          // Scene id in set
 };
 
 struct VisualConfig{                     // Visual configuration
@@ -234,26 +246,8 @@ struct PulseConfig{
   float     pls_dl;                      // Pulse length value delta
 };
 
-struct MatrixConfig{                     // Matrix configuration
-
-  uint8_t       mac[6];                  // Matrix MAC address
-  uint8_t       pin;                     // Matrix SPI pin
-  struct{                                // Set 
-    SetConfig   cfg;                     // Set configuration
-  } set;                
-  struct{                                // Panel 
-    MapConfig    map;                    // Panel map
-    PanelConfig  cfg;                    // Panel configuration
-  } pnl;
-  struct{                                // Board
-    MapConfig    map;                    // Board map
-    BoardConfig  cfg;                    // Board configuration
-  } brd;
-  struct{                                // Visual
-    MapConfig    map;                    // Visual map
-    VisualConfig cfg;                    // Visual configuration
-  } vis;
-};
+//struct MatrixConfig{                     // Matrix configuration
+//};
 
 struct AnalyserData{                     // Analyser data
   uint32_t frm;                          // Analyser frame number
