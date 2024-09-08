@@ -74,7 +74,7 @@ struct PacketHeader{                     // ESP_Now packet header
 
 #define CTRL_LOG                 true    // Controller general logging on/off
 #define SEND_LOG                 true    // Sender general logging on/off
-#define RECV_LOG                 true    // Receiver general logging on/off
+#define RECV_LOG                 false   // Receiver general logging on/off
 
 
 // PERFORMANCE CONTROL
@@ -96,7 +96,11 @@ struct PacketHeader{                     // ESP_Now packet header
 // MEMORY ALLOCATION 
 
 #define ANA_MAX_BANDS            64UL    // Analsyer maximum bands
-
+#define CONFIG_PANEL_MAX         1UL     // Max panels per set
+#define CONFIG_BOARD_MAX         2UL     // Max boards per panel
+#define CONFIG_SCENE_MAX         1UL     // Max scenes per set
+#define CONFIG_VISUAL_MAX        2UL     // Max visuals per scene
+#define CONFIG_PULSE_MAX         2UL     // Max pulses per visual
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
 
@@ -212,6 +216,7 @@ struct SceneConfig{                      // Scene configuration
 };
 
 struct VisualConfig{                     // Visual configuration
+  uint8_t   id;                          // Visual id in scene
   uint32_t  pat;                         // Visual pattern
   uint32_t  smp;                         // Visual samples
   uint32_t  low;                         // Visual band low
