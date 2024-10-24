@@ -35,8 +35,11 @@
 #define ESPNOW_BROADCAST_MAC     0xFF,0xFF,0xFF,0xFF,0xFF,0xFF // Sender MAC broadcast
 #define ESPNOW_PACKET_MAX        250UL           // Packet size limit for ESP_NOW
 
-#define RECV_LED_PIN             23UL            // ESP32 LED matrix pin
-
+#ifdef ARDUINO_ESP32S3_DEV
+  #define RECV_LED_PIN             1UL             // ESP32-S3-Zero LED matrix pin
+#else 
+  #define RECV_LED_PIN             23UL            // ESP32-Devkit-4 LED matrix pin
+#endif
 
 // COMMON FRAME CONSTANTS AND STRUCTURES
 
@@ -97,7 +100,7 @@ struct PacketHeader{                     // ESP_Now packet header
 
 #define ANA_MAX_BANDS            64UL    // Analsyer maximum bands
 #define CONFIG_PANEL_MAX         1UL     // Max panels per set
-#define CONFIG_BOARD_MAX         2UL     // Max boards per panel
+#define CONFIG_BOARD_MAX         5UL     // Max boards per panel
 #define CONFIG_SCENE_MAX         1UL     // Max scenes per set
 #define CONFIG_VISUAL_MAX        2UL     // Max visuals per scene
 #define CONFIG_PULSE_MAX         2UL     // Max pulses per visual
@@ -133,6 +136,7 @@ struct PacketHeader{                     // ESP_Now packet header
 #define VIS_PAT_NORSP            0UL      
 #define VIS_PAT_AMPLI            1UL
 #define VIS_PAT_EVENS            2UL
+#define VIS_PAT_PEAKS            3UL
 #define VIS_PAT_FLEXI            8UL
 #define VIS_PAT_CLOCK            9UL
 
