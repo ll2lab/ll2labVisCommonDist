@@ -107,15 +107,16 @@ struct PacketHeader{                     // ESP_Now packet header
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
 
-#define FRAME_TYPE_COUNT         8UL     // Frame type count
-#define FRAME_TYPE_ANALYSERDATA  0UL     // Analyser data frame 
-#define FRAME_TYPE_PANELCONTROL  1UL     // Panel control frame
-#define FRAME_TYPE_SETCONFIG     2UL     // Set config frame
-#define FRAME_TYPE_PANELCONFIG   3UL     // Panel config frame
-#define FRAME_TYPE_BOARDCONFIG   4UL     // Board config frame
-#define FRAME_TYPE_SCENECONFIG   5UL     // Scene config frame
-#define FRAME_TYPE_VISUALCONFIG  6UL     // Visual config frame
-#define FRAME_TYPE_PULSECONFIG   7UL     // Pulse config frame 
+#define FRAME_TYPE_COUNT         9UL     // Frame type count
+#define FRAME_TYPE_OTAINIT       0UL     // Initialise OTA mode
+#define FRAME_TYPE_ANALYSERDATA  1UL     // Analyser data frame 
+#define FRAME_TYPE_PANELCONTROL  2UL     // Panel control frame
+#define FRAME_TYPE_SETCONFIG     3UL     // Set config frame
+#define FRAME_TYPE_PANELCONFIG   4UL     // Panel config frame
+#define FRAME_TYPE_BOARDCONFIG   5UL     // Board config frame
+#define FRAME_TYPE_SCENECONFIG   6UL     // Scene config frame
+#define FRAME_TYPE_VISUALCONFIG  7UL     // Visual config frame
+#define FRAME_TYPE_PULSECONFIG   8UL     // Pulse config frame 
 
 #define LED_MAP_SET              0UL     // Map for set (not yet used)
 #define LED_MAP_PANEL            1UL     // Map for panel
@@ -147,6 +148,10 @@ struct PacketHeader{                     // ESP_Now packet header
 // Complexity limits
 #define SCN_VIS_MAX              9       // Max visuals per scene
 #define VIS_PLS_MAX              9       // Max pulses per visual
+
+struct OTAInit{
+  bool    ota;                           // Dummy variable
+};
 
 struct MapConfig{
   uint32_t dim_x;                        // Map dimension x
