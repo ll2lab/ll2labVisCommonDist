@@ -1,7 +1,7 @@
-#include <Arduino.h>
-
 #ifndef LEDCOMMON_H
 #define LEDCOMMON_H
+
+#include <Arduino.h>
 
 // COMMON CONTROL CONSTANTS
 
@@ -46,7 +46,7 @@
 #define FRAME_TX_BROADCAST       0UL     // Frame is broadcast
 #define FRAME_TX_UNICAST         1UL     // Frame is unicast
 
-struct FrameConfig{                      // Frame config (calculated)
+/*struct FrameConfig{                      // Frame config (calculated)
   uint32_t frameType;                    // Frame type 
   uint32_t frameTypeSize;                // Frame type size (bytes)
   uint32_t frameHeaderSize;              // Frame header size (bytes)
@@ -72,7 +72,7 @@ struct PacketHeader{                     // ESP_Now packet header
   uint32_t packetPerFrame;               // Packets per frame
   uint32_t packetInFrame;                // Packets number in frame
 };
-
+*/
 
 // LOGGING CONTROL
 
@@ -107,7 +107,7 @@ struct PacketHeader{                     // ESP_Now packet header
 #define CONFIG_PULSE_MAX         2UL     // Max pulses per visual
 
 // SHARED FRAME TYPES, CONSTANTS AND STRUCTURES
-
+/*
 #define FRAME_TYPE_COUNT         19UL     // Frame type count
 #define FRAME_TYPE_OTAINIT       10UL     // Initialise OTA mode
 #define FRAME_TYPE_ANALYSERDATA  11UL     // Analyser data frame 
@@ -118,7 +118,7 @@ struct PacketHeader{                     // ESP_Now packet header
 #define FRAME_TYPE_SCENECONFIG   16UL     // Scene config frame
 #define FRAME_TYPE_VISUALCONFIG  17UL     // Visual config frame
 #define FRAME_TYPE_PULSECONFIG   18UL     // Pulse config frame 
-
+*/
 #define LED_MAP_SET              0UL     // Map for set (not yet used)
 #define LED_MAP_PANEL            1UL     // Map for panel
 #define LED_MAP_MATRIX           2UL     // Map for matrix
