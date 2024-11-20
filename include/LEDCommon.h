@@ -60,6 +60,7 @@ struct FrameConfig{                      // Frame config (calculated)
 };
 
 struct FrameHeader{                      // ESP_Now frame header
+  uint8_t  frameType;                    // Frame type
   uint8_t  txType;                       // Frame broadcast or unicast
   uint8_t  rxMac[6];                     // Matrix MAC address for unicast
 };
