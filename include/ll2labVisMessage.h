@@ -4,20 +4,16 @@
 #include <Arduino.h>
 #include <ll2labVisConfig.h>
 
-#define FRAME_TYPE_COUNT         19UL     // Frame type count
-#define FRAME_TYPE_OTAINIT       10UL     // Initialise OTA mode
-#define FRAME_TYPE_ANALYSERDATA  11UL     // Analyser data frame 
-#define FRAME_TYPE_PANELCONTROL  12UL     // Panel control frame
-#define FRAME_TYPE_SETCONFIG     13UL     // Set config frame
-#define FRAME_TYPE_PANELCONFIG   14UL     // Panel config frame
-#define FRAME_TYPE_BOARDCONFIG   15UL     // Board config frame
-#define FRAME_TYPE_SCENECONFIG   16UL     // Scene config frame
-#define FRAME_TYPE_VISUALCONFIG  17UL     // Visual config frame
-#define FRAME_TYPE_PULSECONFIG   18UL     // Pulse config frame 
-
-
-struct OTAInit{
-  bool    ota;                           // Dummy variable
+enum LL2LabMessageType : uint8_t {
+  FRAME_TYPE_BASE          = 10U,     // NOT USED
+  FRAME_TYPE_ANALYSERDATA ,           // Analyser data frame 
+  FRAME_TYPE_PANELCONTROL,            // Panel control frame
+  FRAME_TYPE_SETCONFIG,               // Set config frame
+  FRAME_TYPE_PANELCONFIG,             // Panel config frame
+  FRAME_TYPE_BOARDCONFIG,             // Board config frame
+  FRAME_TYPE_SCENECONFIG,             // Scene config frame
+  FRAME_TYPE_VISUALCONFIG,            // Visual config frame
+  FRAME_TYPE_PULSECONFIG              // Pulse config frame 
 };
 
 struct MapConfig{
@@ -51,13 +47,6 @@ struct MapConfig{
   uint32_t led_i;                        // Map relative intensity (% of parent/max intensity)  
 };
 
-struct PanelControl{                     // Panel control
-  bool     rst;                          // Reset
-  bool     run;                          // Run
-  uint32_t mrk;                          // Run frame mark
-  bool     dmp;                          // Dump configuration to serial
-};
-
 struct HSVConfig{                        // HSV component configuration
   uint32_t drv;                          // HSV component driver
   uint32_t ini;                          // HSV component range initial (0-255)
@@ -71,6 +60,18 @@ struct HSVConfig{                        // HSV component configuration
   bool     per;                          // HSV component persist value if > new fft value
 };
 
+struct AnalyserData{                     // Analyser data
+  uint32_t frm;                          // Analyser frame number
+  float    bnd_val[ANA_MAX_BANDS];       // Analyser band values
+};
+
+struct PanelControl{                     // Panel control
+  bool     rst;                          // Reset
+  bool     run;                          // Run
+  uint32_t mrk;                          // Run frame mark
+  bool     dmp;                          // Dump configuration to serial
+};
+
 struct SetConfig{                        // Set configuration
   uint8_t   id;                          // Set id
   bool      sta;                          // Statistics logging on/off
@@ -79,7 +80,6 @@ struct SetConfig{                        // Set configuration
 struct PanelConfig{                      // Panel configuration
   uint8_t   id;                          // Panel id in set
 };
-
 
 struct BoardConfig{                      // Board configuration
   uint8_t   id;                          // Board id in panel
@@ -125,14 +125,6 @@ struct PulseConfig{
   float     pls_ds;                      // Pulse frame saturation delta
   float     pls_dv;                      // Pulse frame value delta
   float     pls_dl;                      // Pulse length value delta
-};
-
-//struct MatrixConfig{                     // Matrix configuration
-//};
-
-struct AnalyserData{                     // Analyser data
-  uint32_t frm;                          // Analyser frame number
-  float    bnd_val[ANA_MAX_BANDS];       // Analyser band values
 };
 
 #endif
