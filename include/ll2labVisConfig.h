@@ -73,7 +73,7 @@
 
 #define ANA_MAX_BANDS            64UL    // Analsyer maximum bands
 #define CONFIG_PANEL_MAX         1UL     // Max panels per set
-#define CONFIG_BOARD_MAX         5UL     // Max boards per panel
+#define CONFIG_BOARD_MAX         8UL     // Max boards per panel
 #define CONFIG_SCENE_MAX         1UL     // Max scenes per set
 #define CONFIG_VISUAL_MAX        2UL     // Max visuals per scene
 #define CONFIG_PULSE_MAX         2UL     // Max pulses per visual
