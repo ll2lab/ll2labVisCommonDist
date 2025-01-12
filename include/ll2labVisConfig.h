@@ -102,6 +102,7 @@
 #define VIS_PAT_PEAKS            3UL
 #define VIS_PAT_FLEXI            8UL
 #define VIS_PAT_CLOCK            9UL
+#define VIS_PAT_UPDATING         10UL
 
 // Animation configuration
 #define LED_ANI_SPAN             0UL     // Animation is span
