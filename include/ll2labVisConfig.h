@@ -85,10 +85,16 @@
 #define LED_MAP_MATRIX           2UL     // Map for matrix
 #define LED_MAP_VISUAL           3UL     // Map for visual
 
-#define VIS_HSV_NUM              3UL     // HSV component count
-#define VIS_HSV_HUE              0UL     // HSV hue
-#define VIS_HSV_SAT              1UL     // HSV saturation
-#define VIS_HSV_VAL              2UL     // HSV value
+#define HSV_CMP_MAX              3UL     // HSV component count
+#define HSV_CMP_HUE              0UL     // HSV hue
+#define HSV_CMP_SAT              1UL     // HSV saturation
+#define HSV_CMP_VAL              2UL     // HSV value
+
+#define VIS_CMP_MAX              4UL     // HSV component count
+#define VIS_CMP_HUE              0UL     // HSV hue
+#define VIS_CMP_SAT              1UL     // HSV saturation
+#define VIS_CMP_VAL              2UL     // HSV value
+#define VIS_CMP_AMP              3UL     // HSV value
 
 // Component driver configuration
 #define VIS_DRV_CON              0UL     // VIsual HSV constant driver

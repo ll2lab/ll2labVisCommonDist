@@ -101,11 +101,11 @@ struct VisualConfig{                     // Visual configuration
   uint32_t  stp;                         // Visual frame stop
   uint32_t  inc;                         // Visual frame increment per loop
   uint32_t  div;                         // Visual frame divisor
-  float     min;                         // Visual active minimum
-  float     max;                         // Visual active maximum
-  float     dcy;                         // Visual value decay
-  bool      per;                         // Visual value persist
-  HSVConfig hsv[VIS_HSV_NUM];            // Visual HSV component configs
+  //float     min;                         // Visual active minimum
+  //float     max;                         // Visual active maximum
+  //float     dcy;                         // Visual value decay
+  //bool      per;                         // Visual value persist
+  HSVConfig hsv[VIS_CMP_MAX];            // Visual HSV component configs
 };
 
 struct PulseConfig{
